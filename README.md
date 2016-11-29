@@ -2,8 +2,8 @@
 
 Showing a list of links
 As a Makers Student
-So I can see all the links available in the bookmarks
-I want to see a list of links
+So that I can quickly go to web sites I regularly visit
+I would like to see a list of links on the homepage
 
 Adding new links
 As a Makers Student
