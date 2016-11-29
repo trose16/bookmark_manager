@@ -37,12 +37,12 @@ Read - Retrieve row from the database
 Update - Change the contents of a row in the database
 Delete - Remove a row and its contents from the database
 
-SQL - Stands for Structured Query Language. The way we make calls to our relational database
+SQL - Stands for Structured Query Language. This is how we communicate with our relational database
 
 ### SQL - create
 
 ```
-INSERT INTO 'students' (name) VALUES ('John Smith');
+INSERT INTO students (name) VALUES ('John Smith');
 ```
 
 ### SQL - read
