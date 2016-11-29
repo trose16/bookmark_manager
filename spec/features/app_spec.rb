@@ -5,6 +5,7 @@ feature "Homepage" do
 
     Link.create(name: "Google", url: "http://google.co.uk")
     visit('/links')
+    # save_and_open_page
     expect(page).to have_content("Google")
 
   end
