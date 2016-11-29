@@ -1,8 +1,13 @@
 require 'sinatra/base'
 
 class Bookmark < Sinatra::Base
+
   get '/' do
-    'Hello Bookmark!'
+    
+  end
+
+  get '/links' do
+    erb (:links)
   end
 
   # start the server if ruby file executed directly
