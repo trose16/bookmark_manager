@@ -1,5 +1,6 @@
 require './app/app'
 require 'capybara'
+require './app/models/link.rb'
 
 feature "Viewing a list of links" do
   scenario "Displays a list of links on the homepage" do
