@@ -1,4 +1,4 @@
-require 'link'
+require './app/models/link'
 
 feature "Homepage" do
   scenario "Viewing all the links on the home page" do
