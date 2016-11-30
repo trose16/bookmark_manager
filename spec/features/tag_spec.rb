@@ -5,13 +5,10 @@ feature "tag links" do
     visit("/links/new")
     fill_in :name, with: "Github"
     fill_in :url, with: "http://github.com"
-    fill_in :tag, with: "tech"
+    fill_in :tags, with: "tech"
     click_button 'Add Link'
 
-    expect(current_path).to eq'/links'
-
-    within 'ul#links' do
-      expect(page).to have_content("Github tech")
-    end
+    link = Link.first
+      expect(link.tags.map(&:name)).to include("tech")
   end
 end
