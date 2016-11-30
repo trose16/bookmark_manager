@@ -1,5 +1,7 @@
 require 'sinatra/base'
 require_relative './models/link'
+ENV["RACK_ENV"] ||= "development"
+
 
 class Bookmark < Sinatra::Base
 
