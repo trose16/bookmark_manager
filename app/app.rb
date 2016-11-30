@@ -1,12 +1,13 @@
 require 'sinatra/base'
 require './app/models/link'
 
+
 class Bookmark_manager < Sinatra::Base
   get '/' do
     erb(:index)
   end
 
-  get '/links' do
+  get '/links/index' do
     @links = Link.all
     erb(:'links/index')
   end
