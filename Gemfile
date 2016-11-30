@@ -8,3 +8,7 @@ gem 'capybara'
 gem 'rspec'
 gem 'sinatra'
 gem 'pry'
+
+group :test do
+  gem 'database_cleaner'
+end

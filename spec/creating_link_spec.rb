@@ -1,4 +1,4 @@
-
+require 'spec_helper'
 
 feature "Creating Links" do
     scenario "Creating a new link for the list" do
