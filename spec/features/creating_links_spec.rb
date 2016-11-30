@@ -1,6 +1,10 @@
 require './app/app'
 require 'capybara'
 require './app/models/link.rb'
+require 'database_cleaner'
+
+
+DatabaseCleaner.strategy = :truncation
 
 feature "Adding favourite website to list of bookmarks" do
   scenario "Add site address and title to my bookmark manager" do
@@ -11,5 +15,6 @@ feature "Adding favourite website to list of bookmarks" do
     within 'ul#links' do
       expect(page).to have_content("Youtube")
     end
+      DatabaseCleaner.clean
   end
 end
