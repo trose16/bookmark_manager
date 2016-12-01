@@ -2,6 +2,7 @@ ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
 require './app/models/link'
 require './app/models/data_mapper_setup.rb'
+require 'pry'
 
 class Bookmark_manager < Sinatra::Base
 
@@ -21,7 +22,12 @@ class Bookmark_manager < Sinatra::Base
     link.tags << tag
     link.save
     redirect '/links'
+  end
 
+  get '/tags/:tag' do
+    tag = Tag.all(:tag =>(params[:tag]))
+    @filter_links = tag.links
+    erb(:'links/link_filter')
   end
 
   # start the server if ruby file executed directly
