@@ -1,9 +1,3 @@
-require './app/app'
-require 'capybara'
-require './app/models/link.rb'
-#require 'database_cleaner'
-
-# DatabaseCleaner.strategy = :truncation
 
 feature "Viewing a list of links" do
   scenario "Displays a list of links on the homepage" do
@@ -14,6 +8,5 @@ feature "Viewing a list of links" do
     expect(page).to have_content("Google")
 
   end
-    # DatabaseCleaner.clean
   end
 end
