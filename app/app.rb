@@ -13,7 +13,6 @@ class Bookmark_manager < Sinatra::Base
 
   post '/sign-up' do
     user = User.new(params)
-    user.save
     session['id'] = user.id
     redirect '/links'
   end
