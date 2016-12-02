@@ -7,7 +7,7 @@ RSpec.feature "Adding tags to the bookmark manager" do
     visit '/links/new'
     fill_in "title", with: "Youtube"
     fill_in "url", with: "youtube.com"
-    fill_in "tags", with: "videos, cats"
+    fill_in "tags", with: "videos cats"
     click_button "Submit"
     visit '/tags/videos'
     expect(page).to have_content("Youtube")
