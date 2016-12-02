@@ -1,10 +1,28 @@
 ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
-require './app/models/link'
 require './app/models/data_mapper_setup.rb'
 require 'pry'
 
 class Bookmark_manager < Sinatra::Base
+
+  enable :sessions
+
+  get '/' do
+    erb(:sign_up)
+  end
+
+  post '/sign-up' do
+    user = User.new(params)
+    user.save
+    session['id'] = user.id
+    redirect '/links'
+  end
+
+  helpers do
+    def current_user
+      User.get(session['id'])
+    end
+  end
 
   get '/links/new' do
     erb(:'links/new')
@@ -12,15 +30,16 @@ class Bookmark_manager < Sinatra::Base
 
   get '/links' do
     @links = Link.all
-
+    user = current_user
+    @email = user ? user.email : ""
     erb(:'links/index')
   end
 
   post '/links' do
-    link = Link.create(:title => params[:title], :url => params[:url])
-    tag = Tag.first_or_create(:tag => params[:tags]) # "tag1, tag2"
-    #params[:tags].split(" ").each {|tag| link.tags << Tag.create(:tag => params[:tag])}
-    link.tags << tag
+    link = Link.new(:title => params[:title], :url => params[:url])
+    params[:tags].split(" ").each {|tag|
+      link.tags << Tag.first_or_create(:tag => tag )
+    }
     link.save
     redirect '/links'
   end
