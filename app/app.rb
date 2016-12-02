@@ -2,19 +2,24 @@ ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
 require './app/models/data_mapper_setup.rb'
 require 'pry'
+require 'sinatra/flash'
 
 class Bookmark_manager < Sinatra::Base
 
   enable :sessions
+  register Sinatra::Flash
 
   get '/' do
+    flash.discard if current_user
     erb(:sign_up)
   end
 
   post '/sign-up' do
     user = User.new(params)
     session['id'] = user.id
-    redirect '/links'
+    redirect '/links' if user.valid?
+    flash[:error] = 'Password and confirmation do not match'
+    redirect '/'
   end
 
   helpers do

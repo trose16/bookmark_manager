@@ -11,6 +11,8 @@ RSpec.feature 'Sign up' do
 
   scenario "User can't register when password mismatch" do
     expect{sign_up(password_confirm: "wrong")}.not_to change(User, :count)
+    expect(current_path).to eq '/'
+    expect(page).to have_content 'Password and confirmation do not match'
   end
 
 
